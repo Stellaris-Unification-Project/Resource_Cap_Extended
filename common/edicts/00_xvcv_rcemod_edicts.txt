@@ -1,0 +1,19 @@
+change_capacity = {
+	icon = "GFX_edict_type_policy"
+	length = 0
+	resources = {
+		category = edicts
+	}
+
+	potential = {
+		is_ai = no
+	}
+
+	effect = {
+		country_event = { id = rcemodevent.1 }
+	}
+	
+	ai_weight = {
+		weight = 0
+	}
+}

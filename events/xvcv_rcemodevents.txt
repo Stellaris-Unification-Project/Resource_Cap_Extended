@@ -1,0 +1,189 @@
+namespace = rcemodevent
+
+#menu event
+country_event = {
+	id = rcemodevent.1
+	title = "rcemodevent.1.name"
+	desc = rcemodevent.1.desc
+	picture = GFX_evt_busy_spaceport
+	is_triggered_only = yes
+
+	option = {
+		name = rcemodevent.1.a #open config window
+		hidden_effect = {
+			country_event = { id = rcemodevent.2 }
+		}
+	}
+	option = {
+		name = rcemodevent.1.b #close menu
+	}
+}
+#config window
+country_event = {
+	id = rcemodevent.2
+	title = "rcemodevent.2.name"
+	desc = rcemodevent.2.desc
+	picture = GFX_evt_busy_spaceport
+
+	is_triggered_only = yes
+
+	option = {
+		name = rcemodevent.2.b #set value to very large
+		 hidden_effect = {
+			add_modifier = { modifier = "rcemod_storage_very_large" days = -1 }
+			if = {
+				limit = { has_modifier = rcemod_storage_large }
+				remove_modifier = rcemod_storage_large
+			}
+			else_if = {
+				limit = { has_modifier = rcemod_storage_medium }
+				remove_modifier = rcemod_storage_medium
+			}
+			else_if = {
+			   limit = { has_modifier = rcemod_storage_small }
+			   remove_modifier = rcemod_storage_small
+			}       
+			else_if = {
+			   limit = { has_modifier = rcemod_storage_very_small }
+			   remove_modifier = rcemod_storage_very_small
+			}
+		}
+	}
+	option = {
+		name = rcemodevent.2.c #set value to large
+		 hidden_effect = {
+			add_modifier = { modifier = "rcemod_storage_large" days = -1 }
+			if = {
+				limit = { has_modifier = rcemod_storage_very_large }
+				remove_modifier = rcemod_storage_very_large
+			}
+			else_if = {
+				limit = { has_modifier = rcemod_storage_medium }
+				remove_modifier = rcemod_storage_medium
+			}
+			else_if = {
+			   limit = { has_modifier = rcemod_storage_small }
+			   remove_modifier = rcemod_storage_small
+			}       
+			else_if = {
+			   limit = { has_modifier = rcemod_storage_very_small }
+			   remove_modifier = rcemod_storage_very_small
+			}
+		}
+	}
+	option = {
+		name = rcemodevent.2.d #set value to medium
+		 hidden_effect = {
+			add_modifier = { modifier = "rcemod_storage_medium" days = -1 }
+			if = {
+				limit = { has_modifier = rcemod_storage_very_large }
+				remove_modifier = rcemod_storage_very_large
+			}
+			else_if = {
+				limit = { has_modifier = rcemod_storage_large }
+				remove_modifier = rcemod_storage_large
+			}
+			else_if = {
+			   limit = { has_modifier = rcemod_storage_small }
+			   remove_modifier = rcemod_storage_small
+			}       
+			else_if = {
+			   limit = { has_modifier = rcemod_storage_very_small }
+			   remove_modifier = rcemod_storage_very_small
+			}
+		}
+	}
+	option = {
+		name = rcemodevent.2.e #set value to small
+		 hidden_effect = {
+			add_modifier = { modifier = "rcemod_storage_small" days = -1 }
+			if = {
+				limit = { has_modifier = rcemod_storage_very_large }
+				remove_modifier = rcemod_storage_very_large
+			}
+			else_if = {
+				limit = { has_modifier = rcemod_storage_large }
+				remove_modifier = rcemod_storage_large
+			}
+			else_if = {
+			   limit = { has_modifier = rcemod_storage_medium }
+			   remove_modifier = rcemod_storage_medium
+			}       
+			else_if = {
+			   limit = { has_modifier = rcemod_storage_very_small }
+			   remove_modifier = rcemod_storage_very_small
+			}
+		}
+	}
+	option = {
+		name = rcemodevent.2.f #set value to very small
+		 hidden_effect = {
+			add_modifier = { modifier = "rcemod_storage_very_small" days = -1 }
+			if = {
+				limit = { has_modifier = rcemod_storage_very_large }
+				remove_modifier = rcemod_storage_very_large
+			}
+			else_if = {
+				limit = { has_modifier = rcemod_storage_large }
+				remove_modifier = rcemod_storage_large
+			}
+			else_if = {
+			   limit = { has_modifier = rcemod_storage_medium }
+			   remove_modifier = rcemod_storage_medium
+			}       
+			else_if = {
+			   limit = { has_modifier = rcemod_storage_small }
+			   remove_modifier = rcemod_storage_small
+			}
+		}
+	}
+	option = {
+		name = rcemodevent.2.g #set value to default
+		 hidden_effect = {
+			if = {
+				limit = { has_modifier = rcemod_storage_very_large }
+				remove_modifier = rcemod_storage_very_large
+			}
+			else_if = {
+				limit = { has_modifier = rcemod_storage_large }
+				remove_modifier = rcemod_storage_large
+			}
+			else_if = {
+			   limit = { has_modifier = rcemod_storage_medium }
+			   remove_modifier = rcemod_storage_medium
+			}       
+			else_if = {
+			   limit = { has_modifier = rcemod_storage_small }
+			   remove_modifier = rcemod_storage_small
+			}
+			else_if = {
+			   limit = { has_modifier = rcemod_storage_very_small }
+			   remove_modifier = rcemod_storage_very_small
+			}
+		}
+	}
+	option = {
+		name = rcemodevent.2.a #back to menu
+		hidden_effect = {
+			country_event = { id = rcemodevent.1 }
+		}
+	}		
+}
+event = {
+	id = rcemodevent.3
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { has_global_flag = rcemodevent_3_evt_happened } #only once per game
+	}
+
+	immediate = {
+		set_global_flag = rcemodevent_3_evt_happened
+		every_country = {
+			limit = { is_ai = no }
+			country_event = { id = rcemodevent.1 }
+			add_modifier = { modifier = "rcemod_storage_very_large" days = -1 }
+		}
+	}
+}

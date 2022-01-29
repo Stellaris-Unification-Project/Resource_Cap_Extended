@@ -1,0 +1,8 @@
+[h1] Description [/h1]
+Description
+This is a simple mod that increases the max resource cap of most vanilla resources 'except' influence.
+
+You can also config resource storage capacity via edict, adjust the value as you want.
+
+[h1] Addon [/h1]
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=1993870803] Korean Language Addon [/url]

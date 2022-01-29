@@ -1,0 +1,20 @@
+rcemod_storage_very_large = {
+	icon = "gfx/interface/icons/modifiers/mod_static_resource_energy_add.dds"
+	country_resource_max_add = 20000000
+}
+rcemod_storage_large = {
+	icon = "gfx/interface/icons/modifiers/mod_static_resource_energy_add.dds"
+	country_resource_max_add = 15000000
+}
+rcemod_storage_medium = {
+	icon = "gfx/interface/icons/modifiers/mod_static_resource_energy_add.dds"
+	country_resource_max_add = 10000000
+}
+rcemod_storage_small = {
+	icon = "gfx/interface/icons/modifiers/mod_static_resource_energy_add.dds"
+	country_resource_max_add = 5000000
+}
+rcemod_storage_very_small = {
+	icon = "gfx/interface/icons/modifiers/mod_static_resource_energy_add.dds"
+	country_resource_max_add = 1000000
+}
