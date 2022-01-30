@@ -180,7 +180,7 @@ event = {
 
 	immediate = {
 		set_global_flag = rcemodevent_3_evt_happened
-		every_country = {
+		every_playable_country = {
 			limit = { is_ai = no }
 			country_event = { id = rcemodevent.1 }
 			add_modifier = { modifier = "rcemod_storage_very_large" days = -1 }
